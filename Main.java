@@ -67,16 +67,36 @@ public class Main{
           "This choice correctly uses commas to set off the phrase “the 16th President of the United States”," + "\n" + "which is a nonessential element that should be set off with punctuation.",
           "States,", "States", "States—", "States)"
         );
-        Questions grammar11 = new SATGrammar();
-        Questions grammar12 = new SATGrammar();
-        Questions grammar13 = new SATGrammar();
-        Questions grammar14 = new SATGrammar();
-        Questions grammar15 = new SATGrammar();
-        Questions grammar16 = new SATGrammar();
-        Questions grammar17 = new SATGrammar();
-        Questions grammar18 = new SATGrammar();
-        Questions grammar19 = new SATGrammar();
-        Questions grammar20 = new SATGrammar();
+        Questions grammar11 = new SATGrammar(
+          "_________________ have a population of about 2.7 million.",
+          "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "This choice correctly avoids punctuating the phrase “and its surrounding areas”, which is an essential element that should not be set off with punctuation.",
+          "Baltimore and its surrounding areas", "Baltimore, and its surrounding areas,", "Baltimore—and its surrounding areas,", "Baltimore, and its surrounding areas—"
+        );
+        Questions grammar12 = new SATGrammar(
+          "_________________ has puzzled linguists for decades.",
+          "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "This choice is correct as it correctly puts a pair of matching punctuation marks (in this case, commas) around the nonessential supplement “still undeciphered to this day”.",
+          "The Voynich Manuscript, still undeciphered to this day,", "The Voynich manuscript, still undeciphered to this day", "The Voynich Manuscript—still undeciphered to this day", "The Voynich Manuscript still undeciphered to this day"
+        );
+        Questions grammar13 = new SATGrammar(
+          "When Marie Curie discovered radium, ____________ were not fully understood.",
+          "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "This choice correctly uses the singular possessive “element’s”, showing that the “properties and potential” belong to the element.",
+          "the element's properties and potential", "the elements' properties and potential", "the elements property's and potential", "the element's properties and potential's"
+        );
+        Questions grammar14 = new SATGrammar(
+          "Quantum particles of light—photons—provide an unhackable means of transmitting encryption keys over networks," + "\n" + "as attempts to observe particles in quantum states will invariably alter the particles ______ dismantle any information " + "\n" + "they transmit.",
+          "Which choice completes the text so that it conforms to the conventions of Standard English?",
+          "D is the best choice. It uses paired punctuation in the form of two commas to set off the nonessential phrase “in the process”."
+          "and, in the process,", "and in the process—", "and, in the process", "and in the process,"
+        );
+        //Questions grammar15 = new SATGrammar();
+        //Questions grammar16 = new SATGrammar();
+        //Questions grammar17 = new SATGrammar();
+        //Questions grammar18 = new SATGrammar();
+        //Questions grammar19 = new SATGrammar();
+        //Questions grammar20 = new SATGrammar();
 
         //list of SAT Vocab Questions
         Questions vocab1 = new SATVocab();
