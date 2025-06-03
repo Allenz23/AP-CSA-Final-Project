@@ -35,6 +35,7 @@ public class Questions
         fullQuestion.add(false2);
         fullQuestion.add(false3);
         randomizeQuestion();
+        addToBank(this);
     }    
     //java.util.Collections.shuffle() <- found with the help of StackOverflow
 

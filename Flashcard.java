@@ -15,14 +15,14 @@ public class Flashcard
         //user inputs "a" or "b" to choose what topic they want
         System.out.println("Which topic do you want for your SAT Quiz?" + "\n" + "a) Transitions" + "\n" + "b) Grammar");
         String chosenTopic = scanner.nextLine();
-
+        
         if (chosenTopic.equals("a"))
         {
-            topic = "Transitions";
+            topic = "a";
         }
         else if (chosenTopic.equals("b"))
         {
-            topic = "Grammar";
+            topic = "b";
         }
 
         //user inputs a number between 1 - 20, and a quiz of that length would be generated
@@ -39,8 +39,8 @@ public class Flashcard
     {
         clearQuiz();
         resetScore();
-        if (topic.equals("Transitions")) generateTransitions(length); 
-        else if (topic.equals("Grammar")) generateGrammar(length);
+        if (topic.equals("a")) generateTransitions(length); 
+        else if (topic.equals("b")) generateGrammar(length);
         else System.out.println("ERROR!!!");
     }
 
@@ -54,6 +54,7 @@ public class Flashcard
             Collections.shuffle(questions);
             fullQuiz.add(questions.remove(0));
         }
+        printAllQuestions();
     }
 
     //creates a transitions quiz
@@ -66,6 +67,7 @@ public class Flashcard
             Collections.shuffle(questions);
             fullQuiz.add(questions.remove(0));
         }
+        printAllQuestions();
     }
 
     //clears all elements in the quiz arraylist
@@ -95,9 +97,9 @@ public class Flashcard
         System.out.println("Each question you get right adds 1 point to your total score." + "\n" + "Your score is revealed at the end.");
         for (int i = 0; i < fullQuiz.size(); i++)
         {
-            Scanner scanner = new Scanner(System.in);
             Questions question = fullQuiz.get(i);
-            question.printQuestion();
+            System.out.println(question.printQuestion());
+            Scanner scanner = new Scanner(System.in);
             String chosenAnswer = scanner.nextLine();
             boolean isCorrect = evaluateAnswer(question, chosenAnswer);
             
