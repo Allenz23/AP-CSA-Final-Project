@@ -19,6 +19,7 @@ public class Questions
     //nothing, temporary constructor
     }
     
+    //constructor to set up all the variables; ill will call the randomizeQuestion() methods to randomize the order of the answer choices automatically.
     public Questions(String passage, String question, String explanation, String correctAnswer, String false1, String false2, String false3)
     {
         this.passage = passage;
@@ -37,6 +38,7 @@ public class Questions
     }    
     //java.util.Collections.shuffle() <- found with the help of StackOverflow
 
+    //randomizes order of the answer choices
     public void randomizeQuestion()
     {
         String temp = fullQuestion.remove(0);
@@ -44,6 +46,7 @@ public class Questions
         fullQuestion.add(0, temp);
     }
 
+    //prints the questions in the a, b, c, d format.
     public String printQuestion()
     {
         return 
@@ -57,16 +60,19 @@ public class Questions
         ;
     }
 
+    //returns the correct answer
     public String getAnswer()
     {
         return correctAnswer;
     }
 
+    //returns the explanation
     public String getExplanation()
     {
         return explanation + "\n" + "\n";
     }
 
+    //returns the passage
     public String getPassage()
     {
         return passage;

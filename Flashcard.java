@@ -5,26 +5,26 @@ public class Flashcard
     private ArrayList<Questions> fullQuiz = new ArrayList<Questions>();
     private int score = 0;
 
+
     public void createFlashcard()
     {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Pick a topic:" + "\n" + "a) SAT" + "\n" + "b) Spanish" + "c: (temp topic)" + "\n");
-        String chosenTopic = scanner.nextLine();
         String topic = "";
         int length = 0;
+        //user inputs "a" or "b" to choose what topic they want
+        System.out.println("Which topic do you want for your SAT Quiz?" + "\n" + "a) Vocabulary" + "\n" + "b) Grammar");
+        String chosenTopic = scanner.nextLine();
+
         if (chosenTopic.equals("a"))
         {
-            System.out.println("Which topic do you want for your SAT Quiz?" + "\n" + "a) Vocabulary" + "\n" + "b) Grammar");
-            String chosenUnit = scanner.nextLine();
-            if (chosenUnit.equals("a"))
-            {
-                topic = "Vocabulary";
-            }
-            else if (chosenUnit.equals("b"))
-            {
-                topic = "Grammar";
-            }
+            topic = "Vocabulary";
         }
+        else if (chosenTopic.equals("b"))
+        {
+            topic = "Grammar";
+        }
+
+        //user inputs a number between 1 - 20, and a quiz of that length would be generated
         String l = scanner.nextLine();
         System.out.println("How many questions do you want for your SAT quiz? (Max is 20)");
         length = Integer.valueOf(scanner.nextLine());
@@ -33,7 +33,8 @@ public class Flashcard
         createQuiz(topic, length);
     }
 
-     public void createQuiz(String topic, int length) 
+    //creates a quiz bases off of the chosen topic
+    public void createQuiz(String topic, int length) 
     {
         clearQuiz();
         resetScore();
@@ -41,44 +42,51 @@ public class Flashcard
         else if (topic.equals("Grammar")) generateGrammar(length);
     }
 
+    //creates a vocabulary quiz
     public void generateVocab(int length)
     {
         ArrayList<Questions> questions = SATVocab.vocabQuestions;
         for (int i = 0; i < length; i++)
         {
-            fullQuiz.add(SATVocab.vocabQuestions(i))
+            //randomizes all questions of the list, then adds the first question of the list to the quiz
+            Collection.shuggle(questions);
+            fullQuiz.add(questions.remove(0));
         }
     }
 
+    //creates a grammar quiz
     public void generateGrammar(int length)
     {
         ArrayList<Questions> questions = SATGrammar.grammarQuestions;
         for (int i = 0; i < length; i++)
         {
-            if (questions.size() > 0)
-            {
+            //randomizes all questions of the list, then adds the first question of the list to the quiz
             Collections.shuffle(questions);
             fullQuiz.add(questions.remove(0));
-            }
-            else i += length;
         }
     }
 
+    //clears all elements in the quiz arraylist
     public void clearQuiz()
     {
         fullQuiz = {};
     }
 
+    //sets the score back to 0
     public void resetScore()
     {
         score = 0;
     }
 
+    //returns the explanation for the question
     public String getExplanation(Questions question)
     {
         return question.getExplanation();
     }
 
+    //this prints all the actual questions for the quiz one by one
+    //the user would answer the same questions until the question until they get the question correct
+    //the user gets to pick if they want an explanation after each correct answer
     public void printAllQuestions()
     {
         int attempts = 0;
@@ -111,12 +119,15 @@ public class Flashcard
         }
     }
 
+    //checks to see if the user inputted answer is correct
+    //returns true if is correct, and false otherwise
     public boolean evaluateAnswer(Questions question, String chosenAnswer)
     {
         String correctAnswer = question.getAnswer();
         return correctAnswer.equals(chosenAnswer);
     }
 
+    //returns the user's final score and calculate the uesr's percentage score
     public String getScore()
     {
         return "You got a score of " + score + "out of " + fullQuiz.size() + "!" + "\n" + "(" + Integer(score / fullQuiz.size()) + "%)";
