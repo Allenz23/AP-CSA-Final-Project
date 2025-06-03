@@ -9,8 +9,8 @@ public class Main
         (
           "Generations of mystery and horror ______ have been influenced by the dark, gothic"  + "\n" + "stories of celebrated American author Edgar Allan Poe (1809–1849).",
           "Which choice completes the text so that it conforms to the conventions of Standard English?",
-          "This choice is the best answer. The convention being tested is punctuation between a subject and a verb. When, as in this case, a subject" + "\n" + "(“Generations of mystery and horror writers”) is immediately followed by a verb (“have been influenced”), no punctuation is needed."
-          "writers", "writers", "writers—", "writers;";
+          "This choice is the best answer. The convention being tested is punctuation between a subject and a verb. When, as in this case, a subject" + "\n" + "(“Generations of mystery and horror writers”) is immediately followed by a verb (“have been influenced”), no punctuation is needed.",
+          "writers", "writers", "writers—", "writers;"
         );
         Questions grammar2 = new SATGrammar(
           "Despite being cheap, versatile, and easy to produce, ______ they are made from nonrenewable petroleum, and most do not biodegrade in landfills."
@@ -87,7 +87,7 @@ public class Main
         Questions grammar14 = new SATGrammar(
           "Quantum particles of light—photons—provide an unhackable means of transmitting encryption keys over networks," + "\n" + "as attempts to observe particles in quantum states will invariably alter the particles ______ dismantle any information " + "\n" + "they transmit.",
           "Which choice completes the text so that it conforms to the conventions of Standard English?",
-          "D is the best choice. It uses paired punctuation in the form of two commas to set off the nonessential phrase “in the process”."
+          "D is the best choice. It uses paired punctuation in the form of two commas to set off the nonessential phrase “in the process”.",
           "and, in the process,", "and in the process—", "and, in the process", "and in the process,"
         );
         Questions grammar15 = new SATGrammar(
@@ -194,5 +194,8 @@ public class Main
           "The second sentence describes a consequence of the system laid out in the first sentence: because air is owned" + "\n" + "and sold by companies in this world, people have to buy it.",
           "As a result,", "Nevertheless,", "In any case,", "Earlier"
         );
+
+        Flashcard quiz1 = new Flashcard();
+        quiz1.createFlashcard();
     }
 }

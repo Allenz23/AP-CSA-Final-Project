@@ -57,7 +57,6 @@ public class Questions
         "\n" + "c: " + fullQuestion.get(3) +
         "\n" + "d: " + fullQuestion.get(4) +
         "\n" + "\n";
-        ;
     }
 
     //returns the correct answer

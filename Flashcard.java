@@ -1,5 +1,6 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.Collections;
 public class Flashcard
 {
     private ArrayList<Questions> fullQuiz = new ArrayList<Questions>();
@@ -40,7 +41,7 @@ public class Flashcard
         resetScore();
         if (topic.equals("Transitions")) generateTransitions(length); 
         else if (topic.equals("Grammar")) generateGrammar(length);
-        else System.out.println("ERROR!!!")
+        else System.out.println("ERROR!!!");
     }
 
     //creates a transitions quiz
@@ -50,13 +51,13 @@ public class Flashcard
         for (int i = 0; i < length; i++)
         {
             //randomizes all questions of the list, then adds the first question of the list to the quiz
-            Collection.shuggle(questions);
+            Collections.shuffle(questions);
             fullQuiz.add(questions.remove(0));
         }
     }
 
     //creates a transitions quiz
-    public void generateTransitions(int length)
+    public void generateGrammar(int length)
     {
         ArrayList<Questions> questions = SATGrammar.grammarQuestions;
         for (int i = 0; i < length; i++)
@@ -70,7 +71,7 @@ public class Flashcard
     //clears all elements in the quiz arraylist
     public void clearQuiz()
     {
-        fullQuiz = {};
+        fullQuiz.clear();
     }
 
     //sets the score back to 0
@@ -91,8 +92,8 @@ public class Flashcard
     public void printAllQuestions()
     {
         int attempts = 0;
-        System.out.println("Each question you get right adds 1 point to your total score." + "\n" + "Your score is revealed at the end.")
-        for (int i = 0; i < fullQuiz.length; i++)
+        System.out.println("Each question you get right adds 1 point to your total score." + "\n" + "Your score is revealed at the end.");
+        for (int i = 0; i < fullQuiz.size(); i++)
         {
             Scanner scanner = new Scanner(System.in);
             Questions question = fullQuiz.get(i);
@@ -106,7 +107,7 @@ public class Flashcard
                 if (attempts == 1) score++;
                 System.out.println("Correct! Would you like to see the explanation? (yes/no)");
                 boolean wantsExplanation = scanner.nextLine().equals("yes");
-                if (wantsExplanation) return question.getExplanation();
+                if (wantsExplanation) System.out.println(question.getExplanation());
             }
             else
             {
@@ -131,6 +132,7 @@ public class Flashcard
     //returns the user's final score and calculate the uesr's percentage score
     public String getScore()
     {
-        return "You got a score of " + score + "out of " + fullQuiz.size() + "!" + "\n" + "(" + Integer(score / fullQuiz.size()) + "%)";
+        return "You got a score of " + score + "out of " + fullQuiz.size() + "!" + "\n" + "(" + (Integer)(score / fullQuiz.size()) + "%)";
     }
 }
+
