@@ -77,4 +77,9 @@ public class Questions
     {
         return passage;
     }
+
+    public void addToBank(Questions question)
+    {
+        //subclass call
+    }
 }

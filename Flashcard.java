@@ -12,12 +12,12 @@ public class Flashcard
         String topic = "";
         int length = 0;
         //user inputs "a" or "b" to choose what topic they want
-        System.out.println("Which topic do you want for your SAT Quiz?" + "\n" + "a) Vocabulary" + "\n" + "b) Grammar");
+        System.out.println("Which topic do you want for your SAT Quiz?" + "\n" + "a) Transitions" + "\n" + "b) Grammar");
         String chosenTopic = scanner.nextLine();
 
         if (chosenTopic.equals("a"))
         {
-            topic = "Vocabulary";
+            topic = "Transitions";
         }
         else if (chosenTopic.equals("b"))
         {
@@ -38,14 +38,15 @@ public class Flashcard
     {
         clearQuiz();
         resetScore();
-        if (topic.equals("Vocabulary")) generateVocab(length); 
+        if (topic.equals("Transitions")) generateTransitions(length); 
         else if (topic.equals("Grammar")) generateGrammar(length);
+        else System.out.println("ERROR!!!")
     }
 
-    //creates a vocabulary quiz
-    public void generateVocab(int length)
+    //creates a transitions quiz
+    public void generateTransitions(int length)
     {
-        ArrayList<Questions> questions = SATVocab.vocabQuestions;
+        ArrayList<Questions> questions = SATTransitions.transitionQuestions;
         for (int i = 0; i < length; i++)
         {
             //randomizes all questions of the list, then adds the first question of the list to the quiz
@@ -54,8 +55,8 @@ public class Flashcard
         }
     }
 
-    //creates a grammar quiz
-    public void generateGrammar(int length)
+    //creates a transitions quiz
+    public void generateTransitions(int length)
     {
         ArrayList<Questions> questions = SATGrammar.grammarQuestions;
         for (int i = 0; i < length; i++)
