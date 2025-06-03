@@ -3,13 +3,13 @@ import java.util.Collections;
 
 public class Questions 
 {
+    private String passage;
     private String question;
     private String correctAnswer;
     private String false1;
     private String false2;
     private String false3;
     private String explanation;
-    private int position;
 
     //arraylist will always be in the order of {question, choice1, choice2, choice3, choice4}
     private ArrayList<String> fullQuestion = new ArrayList<String>();
@@ -19,8 +19,9 @@ public class Questions
     //nothing, temporary constructor
     }
     
-    public Questions(String question, String explanation, String correctAnswer, String false1, String false2, String false3)
+    public Questions(String passage, String question, String explanation, String correctAnswer, String false1, String false2, String false3)
     {
+        this.passage = passage;
         this.question = question;
         this.correctAnswer = correctAnswer;
         this.false1 = false1;
@@ -43,24 +44,31 @@ public class Questions
         fullQuestion.add(0, temp);
     }
 
-    public String getQuestion()
+    public String printQuestion()
     {
         return 
-        "question: " + question + 
+        getPassage() +
+        "\n" + "question: " + question + 
         "\n" + "a: " + fullQuestion.get(1) + 
         "\n" + "b: " + fullQuestion.get(2) +
         "\n" + "c: " + fullQuestion.get(3) +
-        "\n" + "d: " + fullQuestion.get(4)
+        "\n" + "d: " + fullQuestion.get(4) +
+        "\n" + "\n";
         ;
+    }
+
+    public String getAnswer()
+    {
+        return correctAnswer;
     }
 
     public String getExplanation()
     {
-        return explanation;
+        return explanation + "\n" + "\n";
     }
 
-    public static void indent()
+    public String getPassage()
     {
-        System.out.println();
+        return passage;
     }
 }
