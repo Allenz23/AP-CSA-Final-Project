@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Scanner;
 
 public class Questions 
 {
@@ -52,12 +53,12 @@ public class Questions
     {
         return 
         getPassage() +
-        "\n" + "question: " + question + 
+        "\n" + "\n" + question + 
         "\n" + "a: " + fullQuestion.get(1) + 
         "\n" + "b: " + fullQuestion.get(2) +
         "\n" + "c: " + fullQuestion.get(3) +
         "\n" + "d: " + fullQuestion.get(4) +
-        "\n" + "\n";
+        "\n" + "\n" + "Chosen Answer: ";
     }
 
     //returns the correct answer
@@ -69,7 +70,7 @@ public class Questions
     //returns the explanation
     public String getExplanation()
     {
-        return explanation + "\n" + "\n";
+        return "\n" + explanation + "\n" + "________________________________________________________________________________________________________________________________________________________" + "\n" + "\n";
     }
 
     //returns the passage
@@ -81,5 +82,10 @@ public class Questions
     public void addToBank(Questions question)
     {
         //subclass call
+    }
+
+    public ArrayList<String> getFullQuestion()
+    {
+        return fullQuestion;
     }
 }

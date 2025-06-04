@@ -13,24 +13,25 @@ public class Flashcard
         String topic = "";
         int length = 0;
         //user inputs "a" or "b" to choose what topic they want
-        System.out.println("Which topic do you want for your SAT Quiz?" + "\n" + "a) Transitions" + "\n" + "b) Grammar");
-        String chosenTopic = scanner.nextLine();
+        System.out.println("\n" + longDash() + "\n" + "\n" + "Which topic do you want for your SAT Quiz?" + "\n" + "a) Transitions" + "\n" + "b) Grammar");
+        String chosenTopic = scanner.next();
         
         if (chosenTopic.equals("a"))
         {
-            topic = "a";
+            topic = "Transitions";
         }
         else if (chosenTopic.equals("b"))
         {
-            topic = "b";
+            topic = "Grammar";
         }
 
         //user inputs a number between 1 - 20, and a quiz of that length would be generated
-        String l = scanner.nextLine();
-        System.out.println("How many questions do you want for your SAT quiz? (Max is 20)");
-        length = Integer.valueOf(scanner.nextLine());
-        System.out.println("Generating a SAT " + topic + " quiz of length " + length);
-        scanner.close();
+        scanner.nextLine();
+        System.out.println("\n" + "How many questions do you want for your SAT quiz? (Max is 15)");
+        length = scanner.nextInt();
+        scanner.nextLine();
+        System.out.println("\n" + "Generating a SAT " + topic + " quiz of length " + length + "\n" + longDash() + "\n");
+        //scanner.close();
         createQuiz(topic, length);
     }
 
@@ -39,8 +40,8 @@ public class Flashcard
     {
         clearQuiz();
         resetScore();
-        if (topic.equals("a")) generateTransitions(length); 
-        else if (topic.equals("b")) generateGrammar(length);
+        if (topic.equals("Transitions")) generateTransitions(length); 
+        else if (topic.equals("Grammar")) generateGrammar(length);
         else System.out.println("ERROR!!!");
     }
 
@@ -93,23 +94,22 @@ public class Flashcard
     //the user gets to pick if they want an explanation after each correct answer
     public void printAllQuestions()
     {
+        Scanner input = new Scanner(System.in);
         int attempts = 0;
-        System.out.println("Each question you get right adds 1 point to your total score." + "\n" + "Your score is revealed at the end.");
+        System.out.println("Each question you get right adds 1 point to your total score. Your score is revealed at the end." + "\n" + longDash() + "\n");
         for (int i = 0; i < fullQuiz.size(); i++)
         {
             Questions question = fullQuiz.get(i);
             System.out.println(question.printQuestion());
-            Scanner scanner = new Scanner(System.in);
-            String chosenAnswer = scanner.nextLine();
+            String chosenAnswer = input.next();
             boolean isCorrect = evaluateAnswer(question, chosenAnswer);
             
             if (isCorrect)
             {
-                attempts++;
-                if (attempts == 1) score++;
-                System.out.println("Correct! Would you like to see the explanation? (yes/no)");
-                boolean wantsExplanation = scanner.nextLine().equals("yes");
-                if (wantsExplanation) System.out.println(question.getExplanation());
+                if (attempts == 0) score++;
+                System.out.print("Correct! ");
+                attempts = 0;
+                System.out.print(question.getExplanation());
             }
             else
             {
@@ -117,10 +117,10 @@ public class Flashcard
                 attempts++;
                 i--;
             }
-            scanner.close();
-            System.out.println("Quiz Over!");
-            getScore();
         }
+        input.close();
+        System.out.println("Quiz Over!");
+        System.out.println(getScore());
     }
 
     //checks to see if the user inputted answer is correct
@@ -128,13 +128,20 @@ public class Flashcard
     public boolean evaluateAnswer(Questions question, String chosenAnswer)
     {
         String correctAnswer = question.getAnswer();
+        int chosenPosition = chosenAnswer.compareTo("a") + 1;
+        chosenAnswer = question.getFullQuestion().get(chosenPosition);
         return correctAnswer.equals(chosenAnswer);
     }
 
     //returns the user's final score and calculate the uesr's percentage score
     public String getScore()
     {
-        return "You got a score of " + score + "out of " + fullQuiz.size() + "!" + "\n" + "(" + (Integer)(score / fullQuiz.size()) + "%)";
+        return longDash() + "\n" + "\n" + "You got a score of " + score + " out of " + fullQuiz.size() + "!" + "\n" + "(" + (Integer)((score * 100) / fullQuiz.size()) + "%)" + "\n";
+    }
+
+    public String longDash()
+    {
+        return "________________________________________________________________________________________________________________________________________________________";
     }
 }
 
